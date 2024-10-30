@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>DentiBlast - Clínica Dental</title>
+    <style>
+        :root {
+            --lavender: #E6E6FA;
+            --soft-pink: #FFE4E1;
+            --sky-blue: #E1F5FE;
+            --light-purple: #D8BFD8;
+            --white: #FFFFFF;
+            --bg-opacity: 0.1; /* Controla la transparencia de la imagen de fondo */
+            --bg-scale: 1.1; /* Controla el tamaño de la imagen de fondo */
+            --bg-hue: 10deg; /* Ajusta el tono de color */
+            --bg-brightness: 0.9; /* Ajusta el brillo */
+        }
+        
+        .top-left-image {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            width: 300px; /* Ajusta el tamaño según necesites */
+            height: auto;
+            z-index: 10; /* Asegura que esté encima de otros elementos */
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-image: url('fondo.jpeg');
+            background-size: 100%; /* Ajusta el tamaño de la imagen */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 192, 247, 0.137); /* Ajusta el color de superposición */
+            filter: opacity(0.8) hue-rotate(10deg) brightness(0.9); /* Ajusta la transparencia, tono y brillo */
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--light-purple), var(--sky-blue));
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            color: #4A4A4A;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        header h2, header h3 {
+            color: #666;
+        }
+
+        section {
+            background: var(--white);
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 1000px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #6A5ACD;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-purple);
+        }
+
+        .objective-title {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .objective-title:hover {
+            color: #9370DB;
+        }
+
+        .objective-title::after {
+            content: '▼';
+            margin-left: 10px;
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+        }
+
+        .objective-title.active::after {
+            transform: rotate(180deg);
+        }
+
+        h3 {
+            color: #9370DB;
+            margin: 1rem 0;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .team-member {
+            display: inline-block;
+            padding: 1rem;
+            margin: 0.5rem;
+            background: var(--sky-blue);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            background: var(--light-purple);
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            opacity: 1;
+            visibility: visible;
+            max-height: 1000px;
+            transition: all 0.5s ease;
+        }
+
+        .values-grid.hidden {
+            opacity: 0;
+            visibility: hidden;
+            max-height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .value-card {
+            background: var(--sky-blue);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            background: var(--light-purple);
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        .location {
+            text-align: center;
+            background: var(--soft-pink);
+            padding: 2rem;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <style>
+        :root {
+            --lavender: #E6E6FA;
+            --soft-pink: #FFE4E1;
+            --sky-blue: #E1F5FE;
+            --light-purple: #D8BFD8;
+            --white: #FFFFFF;
+            --bg-opacity: 0.1;
+            --bg-scale: 1.1;
+            --bg-hue: 10deg;
+            --bg-brightness: 0.9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-image: url('fondo.jpeg');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 192, 247, 0.137);
+            filter: opacity(0.8) hue-rotate(10deg) brightness(0.9);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--light-purple), var(--sky-blue));
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1, header h2, header h3 {
+            font-family: 'Dancing Script', cursive;
+            color: #4A4A4A;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        header h2, header h3 {
+            color: #666;
+            font-size: 1.8rem;
+        }
+
+        section {
+            background: var(--white);
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 1000px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #6A5ACD;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-purple);
+        }
+
+        h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #9370DB;
+            margin: 1rem 0;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .team-member {
+            display: inline-block;
+            padding: 1rem;
+            margin: 0.5rem;
+            background: var(--sky-blue);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            background: var(--light-purple);
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            opacity: 1;
+            visibility: visible;
+            max-height: 1000px;
+            transition: all 0.5s ease;
+        }
+
+        .values-grid.hidden {
+            opacity: 0;
+            visibility: hidden;
+            max-height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .value-card {
+            background: var(--sky-blue);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            background: var(--light-purple);
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        .location {
+            text-align: center;
+            background: var(--soft-pink);
+            padding: 2rem;
+            border-radius: 20px;
+        }
+    </style>
+    
+    <img src="logo.jpg" alt="Logo DentiBlast" class="top-left-image">
+    <header>
+        <h1>INSTITUTO POLITÉCNICO NACIONAL</h1>
+        <h2>CENTRO INTERDISCIPLINARIO - UNIDAD SANTO TOMÁS</h2>
+        <h3>ADMINISTRACIÓN Y GESTIÓN DE LA CLÍNICA DENTIBLAST</h3>
+        <h2>¡Donde cada consulta hace la diferencia!</h2>
+    </header>
+
+    <section>
+        <h2>Historia</h2>
+        <p>DentiBlast es una clínica creada en el 2024 que está conformada por 
+            un grupo de odontólogos con diferentes especialidades con la 
+            finalidad de que el paciente pueda asistir a una sola clínica, 
+            por lo que proponemos tener todos los servicios en un mismo lugar 
+            para que el paciente se sienta cómodo y seguro.
+            DentiBlast fue creada para cambiar la experiencia de la consulta 
+            dental y dar al paciente una mejor atención, personalizada y con 
+            la mejor tecnología.</p>
+    </section>
+
+    <section>
+        <h2>Filosofía</h2>
+        <p>En DentiBlast la clínica odontológica con la más moderna tecnología 
+            mejoramos la calidad de vida de nuestros pacientes y contribuimos 
+            a un futuro más saludable ofreciendo nuestros servicios para todas 
+            las etapas de la vida, ayudando a nuestros pacientes en cada 
+            consulta, haciendo la diferencia</p>
+    </section>
+
+    <section>
+        <h2>Nuestro Equipo</h2>
+        <p>Somos un grupo de odontólogos especialistas certificados...</p>
+        <ul class="team-list">
+            <li class="team-member">Dra. Castillo Pineda Alondra Elein - Especialista en Periodoncia e Implantología</li>
+            <li class="team-member">Dra. Corona Resendiz Mildre Melina - Especialista en Endodoncia</li>
+            <li class="team-member">Dra. Esquildo Uvaldo Karla Akciry - Especialista en Odontopediatría</li>
+            <li class="team-member">Dra. Medina Salazar Denisse - Especialista en Ortodoncia</li>
+            <li class="team-member">Dra. Tinajero Duran Andrea - Especialista en Cirugía Oral y Maxilofacial</li>
+            <li class="team-member">Dra. Ortega Infante Kevin - Especialista en Patología Bucal</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Misión</h3>
+                <p>Somos una clínica 100% mexicana, que se encuentra en diferentes puntos de la ciudad de México, la cuál cuenta con diferentes especialistas del área de odontología, ofreciendo a la población tratamientos de calidad a precios accesibles</p>
+            </div>
+            <div class="value-card">
+                <h3>Visión</h3>
+                <p>Ser la clínica dental más conocida por la población mexicana de diferentes edades, que cuánta con los mejores materiales de calidad, especialistas así como las mejores instalaciones siendo estás cómodas y teniendo la mejor tecnología.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>VALORES</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Trabajo</h3>
+                <p>Buscar que nuestro trabajo sea un factor de desarrollo...</p>
+            </div>
+            <div class="value-card">
+                <h3>Responsabilidad</h3>
+                <p>Realizar bien nuestro trabajo, cumplir con el trabajo cuando se debe...</p>
+            </div>
+            <div class="value-card">
+                <h3>Crecimiento</h3>
+                <p>Mejorar nuestras habilidades y conocimientos personales...</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="objective-title" onclick="toggleObjectives('specific')">OBJETIVOS GENERALES</h2>
+        <div class="values-grid hidden" id="specific-objectives">
+            <div class="value-card">
+                <h3>A LARGO PLAZO</h3>
+                <p>Ser de las tres mejores clínicas en las ciudades más importantes del país, garantizando un excelente servicio personalizado a nuestros clientes con la mejor tecnología</p>
+            </div>
+            <div class="value-card">
+                <h3>A MEDIANO PLAZO</h3>
+                <p>Aumentar un 40% la cartera de clientes
+                    Crear alianzas con compañías para ser una clínica reconocida y así poder brindar mejores productos a nuestros clientes</p>
+            </div>
+            <div class="value-card">
+                <h3>A CORTO PLAZO</h3>
+                <p>Incrementar un 5 % la cartera de clientes, ofreciendo un excelente servicio al cliente y empleando productos especiales que para ellos sea un plus.</p>
+            </div>
+        </div>
+
+        <h2 class="objective-title" onclick="toggleObjectives('general')">OBJETIVOS ESPECÍFICOS</h2>
+        <div class="values-grid hidden" id="general-objectives">
+            <div class="value-card">
+                <h3>Fomentar la Educación Continua</h3>
+                <p>Nosotros los dentistas como el personal auxiliar participaremos regularmente en cursos y seminarios y así brindar un mejor servicio seguro y confiable.</p>
+            </div>
+            <div class="value-card">
+                <h3>Adopción de Tecnología Avanzada</h3>
+                <p>Implementar el uso de tecnología avanzada usando productos de las campañas con las que queremos asociarnos, como la radiografía digital y la impresión 3D, para mejorar la precisión en los diagnósticos y tratamientos.</p>
+            </div>
+            <div class="value-card">
+                <h3>Compromiso con la Comunidad</h3>
+                <p>Participar en actividades comunitarias y ofrecer programas de educación sobre salud bucal en escuelas y otros grupos puede ayudar a construir una relación sólida con la comunidad, promoviendo al mismo tiempo la importancia de la salud bucal.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="objective-title" onclick="togglePolicies('main')">POLÍTICAS</h2>
+        <div class="values-grid hidden" id="main-policies">
+            <div class="value-card">
+                <p>En cumplimiento a lo establecido por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (la "Ley") y con la finalidad de garantizar la privacidad y el derecho a la autodeterminación informativa de sus clientes, hace de su conocimiento la política de privacidad y manejo de datos personales.</p>
+            </div>
+        </div>
+
+        <h2 class="objective-title" onclick="togglePolicies('first')">I. Recabación de datos</h2>
+        <div class="values-grid hidden" id="first-policies">
+            <div class="value-card">
+                <h3>1. Personales</h3>
+                <p>En la prestación de servicios, DentiBlast requerirá a sus clientes los siguientes datos:</p>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li>• Nombre</li>
+                    <li>• Dirección</li>
+                    <li>• Teléfono</li>
+                    <li>• Edad</li>
+                    <li>• Sexo</li>
+                    <li>• Registro Federal de Contribuyentes</li>
+                    <li>• Correo electrónico</li>
+                </ul>
+            </div>
+            <div class="value-card">
+                <h3>2. Personales Sensibles</h3>
+                <p>En la prestación del servicio de orientación médica, DentiBlast recabará de sus clientes la información relativa a su historia clínica. Dado la naturaleza de estos datos, cada cliente que reciba el servicio de orientación médica odontología deberá firmar el aviso de privacidad que se adjunte a su historia clínica, mismo que señala expresamente que se trata de datos personales sensibles.</p>
+            </div>
+        </div>
+
+        <h2 class="objective-title" onclick="togglePolicies('second')">II. Finalidad del tratamiento de datos</h2>
+        <div class="values-grid hidden" id="second-policies">
+            <div class="value-card">
+                <h3>1. Personales</h3>
+                <p>Utilizaremos los datos que el paciente nos proporcione: (i) para contactarlo y enviarle información respecto a los servicios, y (ii) con fines estadísticos sujetos a un proceso de disociación.</p>
+            </div>
+            <div class="value-card">
+                <h3>2. Personales Sensibles</h3>
+                <p>En la prestación del servicio de orientación médica gratuita, únicamente utilizaremos los datos para (i) fines de diagnóstico y tratamiento del cliente, y (ii) fines estadísticos sujetos a un proceso de disociación.</p>
+            </div>
+        </div>
+
+        <h2 class="objective-title" onclick="togglePolicies('third')">III. Transferencias de datos</h2>
+        <div class="values-grid hidden" id="third-policies">
+            <div class="value-card">
+                <h3>1. Personales</h3>
+                <p>Excepto por aquellos datos personales que se recaben para la promoción de servicios de terceros distintos a DentiBlast no divulgará ni compartirá con terceros los datos personales que recabe de sus clientes.</p>
+            </div>
+            <div class="value-card">
+                <h3>2. DentiBlast</h3>
+                <p>(i) lo comunicará a sus clientes, quienes, de no estar interesados en el servicio del tercero podrán negarse a entregar sus datos y ser contactados por dicho tercero, (ii) firmará un contrato con dicho tercero para que este, en la prestación de sus servicios, (1) instaure las medidas de seguridad necesarias para garantizar un nivel de protección adecuado respecto los datos personales de los clientes y (2) limite el uso de los datos para la finalidad con que le fueron entregados por DentiBlast.</p>
+            </div>
+            <div class="value-card">
+                <h3>3. Personales Sensibles</h3>
+                <p>DentiBlast no transmitirá los datos sensibles que recabe de sus clientes con motivo de la orientación médica odontología. c. Transferencia de datos sin consentimiento del cliente. DentiBlast podrá transmitir los datos que recabe de sus clientes: (i) a cualquiera de sus subsidiarias y/o afiliadas, quienes quedarán obligadas a resguardar y utilizar la información en términos de este Aviso de Privacidad y (ii) por cualquiera de las razones previstas en la Ley.</p>
+            </div>
+        </div>
+
+        <h2 class="objective-title" onclick="togglePolicies('fourth')">IV. Medios para ejercer los derechos ARCO</h2>
+        <div class="values-grid hidden" id="fourth-policies">
+            <div class="value-card">
+                <p>Todo paciente de DentiBlast interesado en ejercer los derechos previstos en la Ley, podrá hacerlo poniéndose en contacto con la Subdirección de Mercadotecnia y Servicio al Cliente de DentiBlast, ubicada en Calle Galileo 211-Piso 3, Polanco Polanco IV Secc, Miguel Hidalgo, 11550, Ciudad de México. Teléfono 5567543722 ó enviando un correo electrónico a la siguiente dirección: dentiblast@laclinicapolanco.com</p>
+            </div>
+        </div>
+
+        <h2 class="objective-title" onclick="togglePolicies('fifth')">V. Cambios al Aviso de Privacidad</h2>
+        <div class="values-grid hidden" id="fifth-policies">
+            <div class="value-card">
+                <p>Cualquier cambio a este Aviso de Privacidad se hará del conocimiento de los clientes de DentiBlast.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="location">
+        <h2>Ubicación</h2>
+        <p>Dirección: Calle Galileo 211-Piso 3, Polanco...</p>
+    </section>
+
+    <script>
+        let activeSection = null;
+        let activePolicySection = null;
+
+        function toggleObjectives(type) {
+            const objectives = document.getElementById(`${type}-objectives`);
+            const title = objectives.previousElementSibling;
+            
+            if (activePolicySection) {
+                activePolicySection.classList.add('hidden');
+                activePolicySection.previousElementSibling.classList.remove('active');
+                activePolicySection = null;
+            }
+
+            if (activeSection && activeSection !== objectives) {
+                activeSection.classList.add('hidden');
+                activeSection.previousElementSibling.classList.remove('active');
+            }
+
+            objectives.classList.toggle('hidden');
+            title.classList.toggle('active');
+            
+            activeSection = objectives.classList.contains('hidden') ? null : objectives;
+
+            event.stopPropagation();
+        }
+
+        function togglePolicies(type) {
+            const policies = document.getElementById(`${type}-policies`);
+            const title = policies.previousElementSibling;
+            
+            if (activeSection) {
+                activeSection.classList.add('hidden');
+                activeSection.previousElementSibling.classList.remove('active');
+                activeSection = null;
+            }
+
+            if (activePolicySection && activePolicySection !== policies) {
+                activePolicySection.classList.add('hidden');
+                activePolicySection.previousElementSibling.classList.remove('active');
+            }
+
+            policies.classList.toggle('hidden');
+            title.classList.toggle('active');
+            
+            activePolicySection = policies.classList.contains('hidden') ? null : policies;
+
+            event.stopPropagation();
+        }
+
+        document.addEventListener('click', () => {
+            if (activeSection) {
+                activeSection.classList.add('hidden');
+                activeSection.previousElementSibling.classList.remove('active');
+                activeSection = null;
+            }
+            if (activePolicySection) {
+                activePolicySection.classList.add('hidden');
+                activePolicySection.previousElementSibling.classList.remove('active');
+                activePolicySection = null;
+            }
+        });
+    </script>
+
+    <script>
+        let activeSection = null;
+
+        function toggleObjectives(type) {
+            const objectives = document.getElementById(`${type}-objectives`);
+            const title = objectives.previousElementSibling;
+            
+            // Si hay una sección activa y es diferente a la que se está clickeando, la cerramos
+            if (activeSection && activeSection !== objectives) {
+                activeSection.classList.add('hidden');
+                activeSection.previousElementSibling.classList.remove('active');
+            }
+
+            // Toggle de la sección actual
+            objectives.classList.toggle('hidden');
+            title.classList.toggle('active');
+            
+            // Actualizamos la sección activa
+            activeSection = objectives.classList.contains('hidden') ? null : objectives;
+
+            // Evitamos que el click se propague al documento
+            event.stopPropagation();
+        }
+
+        // Cerrar al hacer click fuera
+        document.addEventListener('click', () => {
+            if (activeSection) {
+                activeSection.classList.add('hidden');
+                activeSection.previousElementSibling.classList.remove('active');
+                activeSection = null;
+            }
+        });
+    </script>
+</body>
+</html>
