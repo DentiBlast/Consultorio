@@ -12,171 +12,177 @@
             --sky-blue: #E1F5FE;
             --light-purple: #D8BFD8;
             --white: #FFFFFF;
-            --bg-opacity: 0.1; /* Controla la transparencia de la imagen de fondo */
-            --bg-scale: 1.1; /* Controla el tamaño de la imagen de fondo */
-            --bg-hue: 10deg; /* Ajusta el tono de color */
-            --bg-brightness: 0.9; /* Ajusta el brillo */
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --bg-opacity: 0.1;
+            --bg-scale: 1.1;
+            --bg-hue: 10deg;
+            --bg-brightness: 0.9;
         }
-        
-        .top-left-image {
-            position: absolute;
-            top: 50px;
-            left: 100px;
-            width: 300px; /* Ajusta el tamaño según necesites */
-            height: auto;
-            z-index: 10; /* Asegura que esté encima de otros elementos */
-        }
-
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
             background-image: url('fondo.jpeg');
-            background-size: 100%; /* Ajusta el tamaño de la imagen */
+            background-size: 100%;
             background-repeat: no-repeat;
             background-position: center;
             background-blend-mode: overlay;
-            background-color: rgba(255, 192, 247, 0.137); /* Ajusta el color de superposición */
-            filter: opacity(0.8) hue-rotate(10deg) brightness(0.9); /* Ajusta la transparencia, tono y brillo */
+            background-color: rgba(255, 192, 247, 0.137);
+            filter: opacity(0.8) hue-rotate(10deg) brightness(0.9);
             line-height: 1.6;
+            color: var(--text-primary);
+            font-size: 16px;
+        }
+
+        .top-left-image {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            width: 300px;
+            height: auto;
+            z-index: 10;
         }
 
         header {
             background: linear-gradient(to right, var(--light-purple), var(--sky-blue));
-            padding: 2rem;
+            padding: 2.5rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            color: #4A4A4A;
-            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 1rem;
+            letter-spacing: 0.5px;
         }
 
-        header h2, header h3 {
-            color: #666;
+        header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--text-secondary);
         }
 
         section {
             background: var(--white);
             margin: 2rem auto;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 20px;
             max-width: 1000px;
             box-shadow: 0 6px 12px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
         }
 
-        section:hover {
-            transform: translateY(-5px);
-        }
-
-        h2 {
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
             color: #6A5ACD;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--light-purple);
+            letter-spacing: 0.3px;
         }
 
-        .objective-title {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .objective-title:hover {
-            color: #9370DB;
-        }
-
-        .objective-title::after {
-            content: '▼';
-            margin-left: 10px;
-            font-size: 0.8em;
-            transition: transform 0.3s ease;
-        }
-
-        .objective-title.active::after {
-            transform: rotate(180deg);
-        }
-
-        h3 {
-            color: #9370DB;
-            margin: 1rem 0;
-        }
-
-        p {
-            color: #666;
-            margin-bottom: 1rem;
+        section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
         }
 
         .team-member {
             display: inline-block;
-            padding: 1rem;
-            margin: 0.5rem;
+            padding: 1.2rem;
+            margin: 0.6rem;
             background: var(--sky-blue);
             border-radius: 15px;
             transition: all 0.3s ease;
-        }
-
-        .team-member:hover {
-            background: var(--light-purple);
-            color: white;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            opacity: 1;
-            visibility: visible;
-            max-height: 1000px;
-            transition: all 0.5s ease;
-        }
-
-        .values-grid.hidden {
-            opacity: 0;
-            visibility: hidden;
-            max-height: 0;
-            margin: 0;
-            padding: 0;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         .value-card {
             background: var(--sky-blue);
-            padding: 1.5rem;
+            padding: 1.8rem;
             border-radius: 15px;
             text-align: center;
             transition: all 0.3s ease;
         }
 
-        .value-card:hover {
-            background: var(--light-purple);
-            transform: translateY(-5px);
-            color: white;
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #9370DB;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            font-size: 1rem;
+            line-height: 1.7;
         }
 
         .location {
             text-align: center;
             background: var(--soft-pink);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 20px;
+            font-size: 1.1rem;
+        }
+
+        .social-link {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
         }
 
         @media (max-width: 768px) {
-            section {
-                margin: 1rem;
-                padding: 1rem;
+            header h1 {
+                font-size: 2rem;
             }
 
-            header h1 {
-                font-size: 1.8rem;
+            header h2 {
+                font-size: 1.4rem;
+            }
+
+            header h3 {
+                font-size: 1.2rem;
+            }
+
+            section {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.6rem;
+            }
+
+            section p {
+                font-size: 1rem;
+            }
+
+            .team-member {
+                font-size: 0.9rem;
+                padding: 1rem;
             }
         }
     </style>
@@ -208,7 +214,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-blend-mode: overlay;
-            background-color: rgba(255, 192, 247, 0.137);
+            background-color: rgba(255, 192, 247, 0.404);
             filter: opacity(0.8) hue-rotate(10deg) brightness(0.9);
             line-height: 1.6;
         }
@@ -400,7 +406,7 @@
     </section>
 
     <section>
-        <h2 class="objective-title" onclick="toggleObjectives('specific')">OBJETIVOS GENERALES</h2>
+        <h2 class="objective-title" onclick="toggleObjectives('specific')">OBJETIVOS GENERALES <span class="arrow">▼</span></h2>
         <div class="values-grid hidden" id="specific-objectives">
             <div class="value-card">
                 <h3>A LARGO PLAZO</h3>
@@ -417,7 +423,7 @@
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="toggleObjectives('general')">OBJETIVOS ESPECÍFICOS</h2>
+        <h2 class="objective-title" onclick="toggleObjectives('general')">OBJETIVOS ESPECÍFICOS <span class="arrow">▼</span></h2>
         <div class="values-grid hidden" id="general-objectives">
             <div class="value-card">
                 <h3>Fomentar la Educación Continua</h3>
@@ -435,14 +441,14 @@
     </section>
 
     <section>
-        <h2 class="objective-title" onclick="togglePolicies('main')">POLÍTICAS</h2>
+        <h2 class="objective-title" onclick="togglePolicies('main')">POLÍTICAS <span class="arrow">▼</span></h2>
         <div class="values-grid hidden" id="main-policies">
             <div class="value-card">
                 <p>En cumplimiento a lo establecido por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (la "Ley") y con la finalidad de garantizar la privacidad y el derecho a la autodeterminación informativa de sus clientes, hace de su conocimiento la política de privacidad y manejo de datos personales.</p>
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('first')">I. Recabación de datos</h2>
+        <h2 class="objective-title" onclick="togglePolicies('first')">I. Recabación de datos <span class="arrow">▼</span></h2>
         <div class="values-grid hidden" id="first-policies">
             <div class="value-card">
                 <h3>1. Personales</h3>
@@ -463,7 +469,7 @@
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('second')">II. Finalidad del tratamiento de datos</h2>
+        <h2 class="objective-title" onclick="togglePolicies('second')">II. Finalidad del tratamiento de datos <span class="arrow">▼</span></h2>
         <div class="values-grid hidden" id="second-policies">
             <div class="value-card">
                 <h3>1. Personales</h3>
@@ -475,7 +481,7 @@
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('third')">III. Transferencias de datos</h2>
+        <h2 class="objective-title" onclick="togglePolicies('third')">III. Transferencias de datos <span class="arrow">▼</span></h2>
         <div class="values-grid hidden" id="third-policies">
             <div class="value-card">
                 <h3>1. Personales</h3>
@@ -491,20 +497,119 @@
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('fourth')">IV. Medios para ejercer los derechos ARCO</h2>
+        <h2 class="objective-title" onclick="togglePolicies('fourth')">IV. Medios para ejercer los derechos ARCO <span class="arrow">▼</span></h2>
         <div class="values-grid hidden" id="fourth-policies">
             <div class="value-card">
                 <p>Todo paciente de DentiBlast interesado en ejercer los derechos previstos en la Ley, podrá hacerlo poniéndose en contacto con la Subdirección de Mercadotecnia y Servicio al Cliente de DentiBlast, ubicada en Calle Galileo 211-Piso 3, Polanco Polanco IV Secc, Miguel Hidalgo, 11550, Ciudad de México. Teléfono 5567543722 ó enviando un correo electrónico a la siguiente dirección: dentiblast@laclinicapolanco.com</p>
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('fifth')">V. Cambios al Aviso de Privacidad</h2>
+        <h2 class="objective-title" onclick="togglePolicies('fifth')">V. Cambios al Aviso de Privacidad <span class="arrow">▼</span></h2>
         <div class="values-grid hidden" id="fifth-policies">
             <div class="value-card">
                 <p>Cualquier cambio a este Aviso de Privacidad se hará del conocimiento de los clientes de DentiBlast.</p>
             </div>
         </div>
     </section>
+
+    <section id="Contacto" class="section">
+        <h2>Contacto</h2>
+        <ul>
+          <li>
+            <a href="https://x.com/dentiblast2024?t=EVFHw-jMY02Hi7kwe-czaQ&s=08" target="_blank" class="social-link">
+              <svg class="social-icon" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              Dentiblast Clínica Polanco
+            </a>
+          </li>
+          <li>
+            <a href="mailto:dentiblast@gmail.com" target="_blank" class="social-link">
+              <svg class="social-icon" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+              dentiblast@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/profile.php?id=61567887723189" target="_blank" class="social-link">
+              <svg class="social-icon" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              Dentiblast Clínica
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/dent.iblast?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-link">
+              <svg class="social-icon" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+              </svg>
+              @dent.iblast
+            </a>
+          </li>
+        </ul>
+        <style>
+          #Contacto ul {
+            list-style-type: none;
+            padding-left: 1.5rem;
+          }
+          
+          .social-link {
+            color: var(--secondary-color, #6a0dad8a);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            gap: 0.8rem;
+          }
+          
+          .social-icon {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+          }
+          
+          .social-link:hover {
+            color: var(--white, #FFFFFF);
+            background-color: var(--secondary-color, #6a0dada1);
+            text-decoration: none;
+            transform: translateY(-2px);
+          }
+          
+          .social-link:hover .social-icon {
+            transform: scale(1.1);
+          }
+          
+          #Contacto li {
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+          }
+          
+          #Contacto li:hover {
+            transform: translateX(5px);
+          }
+          
+          @media only screen and (max-width: 768px) {
+            #Contacto ul {
+              padding-left: 0.5rem;
+            }
+            
+            .social-link {
+              font-size: 0.9rem;
+              padding: 6px 10px;
+            }
+            
+            .social-icon {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        </style>
+      </section>
 
     <section class="location">
         <h2>Ubicación</h2>
@@ -608,5 +713,6 @@
             }
         });
     </script>
+    
 </body>
 </html>
