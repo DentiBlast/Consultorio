@@ -598,9 +598,46 @@
         </style>
       </section>
 
-    <section class="location">
+      <section class="location">
         <h2>Ubicación</h2>
-        <p>Dirección: Calle Galileo 211-Piso 3, Polanco...</p>
+        <p>Dirección: Calle Galileo 211-Piso 3, Polanco Polanco IV Secc, Miguel Hidalgo, 11550, Ciudad de México</p>
+        <div class="map-container" style="width: 100%; max-width: 800px; margin: 20px auto;">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.6613784967227!2d-99.19075312526979!3d19.43389248186676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d201ff56a806f7%3A0x7ef870316fc4bde!2sGalileo%20211%2C%20Polanco%2C%20Polanco%20IV%20Secc%2C%20Miguel%20Hidalgo%2C%2011550%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses!2smx!4v1704585233890!5m2!1ses!2smx"
+                width="100%" 
+                height="450" 
+                style="border:0; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <style>
+            .location {
+                text-align: center;
+                background: var(--soft-pink);
+                padding: 2.5rem;
+                border-radius: 20px;
+                font-size: 1.1rem;
+            }
+            
+            .map-container {
+                transition: transform 0.3s ease;
+            }
+            
+            .map-container:hover {
+                transform: scale(1.01);
+            }
+            
+            @media (max-width: 768px) {
+                .map-container {
+                    margin: 10px;
+                }
+                iframe {
+                    height: 300px;
+                }
+            }
+        </style>
     </section>
 
     <script>
