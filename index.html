@@ -7,13 +7,14 @@
     <title>DentiBlast - Clínica Dental</title>
     <style>
         :root {
-            --lavender: #E6E6FA;
-            --soft-pink: #FFE4E1;
-            --sky-blue: #E1F5FE;
-            --light-purple: #D8BFD8;
-            --white: #FFFFFF;
-            --text-primary: #333333;
-            --text-secondary: #666666;
+            --primary: #6A5ACD;
+            --primary-light: #E6E6FA;
+            --secondary: #4A90E2;
+            --accent: #FF69B4;
+            --background: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
         }
 
         * {
@@ -24,121 +25,179 @@
         }
 
         body {
-            background-image: url('fondo.jpeg');
-            background-size: 100%;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-blend-mode: overlay;
-            background-color: rgba(255, 192, 247, 0.137);
+            background-color: #F8F9FA;
             line-height: 1.6;
-            color: var(--text-primary);
+            color: var(--text);
         }
 
-        .top-left-image {
-            position: absolute;
-            top: 50px;
-            left: 100px;
-            width: 300px;
-            height: auto;
-            z-index: 10;
-        }
-
-        header h1, header h2, header h3, section h2, .value-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 500;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         header {
-            background: linear-gradient(to right, var(--light-purple), var(--sky-blue));
-            padding: 2.5rem;
+            background: var(--gradient);
+            padding: 3rem 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('fondo.jpeg') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-size: 2.8rem;
-            color: var(--text-primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         header h2 {
             font-size: 1.8rem;
-            color: var(--text-secondary);
+            color: rgba(255,255,255,0.9);
             margin-bottom: 0.5rem;
         }
 
-        header h3 {
-            font-size: 1.6rem;
-            color: var(--text-secondary);
+        .top-left-image {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
+
+        .top-left-image:hover {
+            transform: scale(1.05);
+        }
+
         section {
-            background: var(--white);
+            background: var(--background);
             margin: 2rem auto;
             padding: 2.5rem;
-            border-radius: 20px;
-            max-width: 1000px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        section h2 {
-            font-size: 2rem;
-            color: #6A5ACD;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--light-purple);
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
         }
 
-        section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 1.2rem;
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .value-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .team-member {
             display: inline-block;
-            padding: 1.2rem;
-            margin: 0.6rem;
-            background: var(--sky-blue);
-            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            margin: 0.5rem;
+            background: var(--primary-light);
+            border-radius: 30px;
             transition: all 0.3s ease;
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--primary);
         }
 
-        .value-card {
-            background: var(--sky-blue);
-            padding: 1.8rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
+        .team-member:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
 
-        .value-card h3 {
-            font-size: 1.6rem;
-            color: #9370DB;
-            margin-bottom: 1rem;
-        }
-
-        .value-card p {
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        .location {
-            text-align: center;
-            background: var(--soft-pink);
-            padding: 2.5rem;
-            border-radius: 20px;
+        .agendar-btn {
+            position: fixed;
+            right: 30px;
+            padding: 15px 30px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 30px;
             font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            z-index: 1000;
+        }
+
+        .agendar-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
         }
 
         .social-link {
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 0.2px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .social-link:hover {
+            background: var(--primary-light);
+            transform: translateX(10px);
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .location {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         @media (max-width: 768px) {
@@ -150,50 +209,29 @@
                 font-size: 1.4rem;
             }
 
-            header h3 {
-                font-size: 1.2rem;
+            .top-left-image {
+                width: 150px;
+            }
+
+            .agendar-btn {
+                right: 20px;
+                padding: 12px 24px;
+                font-size: 1rem;
             }
 
             section {
                 padding: 1.5rem;
                 margin: 1rem;
             }
-
-            section h2 {
-                font-size: 1.6rem;
-            }
-
-            section p {
-                font-size: 1rem;
-            }
-
-            .team-member {
-                font-size: 0.9rem;
-                padding: 1rem;
-            }
         }
-        .agendar-btn {
-            position: fixed;
-            right: 200px;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #9370DB, #6A5ACD);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            font-family: 'Montserrat', sans-serif;
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
-        
-        .agendar-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-            background: linear-gradient(135deg, #6A5ACD, #483D8B);
-        }
+
     </style>
     
     <meta charset="UTF-8">
@@ -201,6 +239,7 @@
     <title>Agendar Cita</title>
 </head>
 <body>
+    
     <style>
         :root {
             --lavender: #E6E6FA;
@@ -343,7 +382,16 @@
             padding: 2rem;
             border-radius: 20px;
         }
+        .top-left-image {
+            position: absolute;
+            top: 60px;
+            left: 15px;
+            width: 230px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 
+        }
     </style>
     
     <img src="logo.jpg" alt="Logo DentiBlast" class="top-left-image">
@@ -355,8 +403,7 @@
     </header>
     
     <a href="agendar.html" class="agendar-btn">Agendar Cita</a>
-
-    
+    <img src="logo.jpg" alt="Logo DentiBlast" class="top-left-image">
     <section>
         <h2>Historia</h2>
         <p>DentiBlast es una clínica creada en el 2024 que está conformada por 
@@ -423,7 +470,7 @@
     </section>
 
     <section>
-        <h2 class="objective-title" onclick="toggleObjectives('specific')">OBJETIVOS GENERALES <span class="arrow">▼</span></h2>
+        <h3 class="objective-title" onclick="toggleObjectives('specific')">OBJETIVOS GENERALES <span class="arrow">▼</span></h3>
         <div class="values-grid hidden" id="specific-objectives">
             <div class="value-card">
                 <h3>A LARGO PLAZO</h3>
@@ -440,7 +487,7 @@
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="toggleObjectives('general')">OBJETIVOS ESPECÍFICOS <span class="arrow">▼</span></h2>
+        <h3 class="objective-title" onclick="toggleObjectives('general')">OBJETIVOS ESPECÍFICOS <span class="arrow">▼</span></h3>
         <div class="values-grid hidden" id="general-objectives">
             <div class="value-card">
                 <h3>Fomentar la Educación Continua</h3>
@@ -458,14 +505,14 @@
     </section>
 
     <section>
-        <h2 class="objective-title" onclick="togglePolicies('main')">POLÍTICAS <span class="arrow">▼</span></h2>
+        <h3 class="objective-title" onclick="togglePolicies('main')">POLÍTICAS <span class="arrow">▼</span></h3>
         <div class="values-grid hidden" id="main-policies">
             <div class="value-card">
                 <p>En cumplimiento a lo establecido por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (la "Ley") y con la finalidad de garantizar la privacidad y el derecho a la autodeterminación informativa de sus clientes, hace de su conocimiento la política de privacidad y manejo de datos personales.</p>
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('first')">I. Recabación de datos <span class="arrow">▼</span></h2>
+        <h3 class="objective-title" onclick="togglePolicies('first')">I. Recabación de datos <span class="arrow">▼</span></h3>
         <div class="values-grid hidden" id="first-policies">
             <div class="value-card">
                 <h3>1. Personales</h3>
@@ -486,7 +533,7 @@
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('second')">II. Finalidad del tratamiento de datos <span class="arrow">▼</span></h2>
+        <h3 class="objective-title" onclick="togglePolicies('second')">II. Finalidad del tratamiento de datos <span class="arrow">▼</span></h3>
         <div class="values-grid hidden" id="second-policies">
             <div class="value-card">
                 <h3>1. Personales</h3>
@@ -498,7 +545,7 @@
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('third')">III. Transferencias de datos <span class="arrow">▼</span></h2>
+        <h3 class="objective-title" onclick="togglePolicies('third')">III. Transferencias de datos <span class="arrow">▼</span></h3>
         <div class="values-grid hidden" id="third-policies">
             <div class="value-card">
                 <h3>1. Personales</h3>
@@ -514,14 +561,14 @@
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('fourth')">IV. Medios para ejercer los derechos ARCO <span class="arrow">▼</span></h2>
+        <h3 class="objective-title" onclick="togglePolicies('fourth')">IV. Medios para ejercer los derechos ARCO <span class="arrow">▼</span></h3>
         <div class="values-grid hidden" id="fourth-policies">
             <div class="value-card">
                 <p>Todo paciente de DentiBlast interesado en ejercer los derechos previstos en la Ley, podrá hacerlo poniéndose en contacto con la Subdirección de Mercadotecnia y Servicio al Cliente de DentiBlast, ubicada en Calle Galileo 211-Piso 3, Polanco Polanco IV Secc, Miguel Hidalgo, 11550, Ciudad de México. Teléfono 5567543722 ó enviando un correo electrónico a la siguiente dirección: dentiblast@laclinicapolanco.com</p>
             </div>
         </div>
 
-        <h2 class="objective-title" onclick="togglePolicies('fifth')">V. Cambios al Aviso de Privacidad <span class="arrow">▼</span></h2>
+        <h3 class="objective-title" onclick="togglePolicies('fifth')">V. Cambios al Aviso de Privacidad <span class="arrow">▼</span></h3>
         <div class="values-grid hidden" id="fifth-policies">
             <div class="value-card">
                 <p>Cualquier cambio a este Aviso de Privacidad se hará del conocimiento de los clientes de DentiBlast.</p>
@@ -741,24 +788,17 @@
             const objectives = document.getElementById(`${type}-objectives`);
             const title = objectives.previousElementSibling;
             
-            // Si hay una sección activa y es diferente a la que se está clickeando, la cerramos
             if (activeSection && activeSection !== objectives) {
                 activeSection.classList.add('hidden');
                 activeSection.previousElementSibling.classList.remove('active');
             }
 
-            // Toggle de la sección actual
             objectives.classList.toggle('hidden');
             title.classList.toggle('active');
-            
-            // Actualizamos la sección activa
+        
             activeSection = objectives.classList.contains('hidden') ? null : objectives;
-
-            // Evitamos que el click se propague al documento
             event.stopPropagation();
         }
-
-        // Cerrar al hacer click fuera
         document.addEventListener('click', () => {
             if (activeSection) {
                 activeSection.classList.add('hidden');
