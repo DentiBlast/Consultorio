@@ -78,7 +78,7 @@
         .top-left-image {
             position: absolute;
             top: 20px;
-            left: 20px;
+            left: 40px;
             width: 200px;
             height: auto;
             border-radius: 10px;
@@ -385,8 +385,8 @@
         .top-left-image {
             position: absolute;
             top: 60px;
-            left: 15px;
-            width: 230px;
+            left: 80px;
+            width: 280px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -394,7 +394,7 @@
         }
     </style>
     
-    <img src="logo.jpg" alt="Logo DentiBlast" class="top-left-image">
+    <img src="logo.png" alt="Logo DentiBlast" class="top-left-image">
     <header>
         <h1>INSTITUTO POLITÉCNICO NACIONAL</h1>
         <h2>CENTRO INTERDISCIPLINARIO - UNIDAD SANTO TOMÁS</h2>
@@ -403,7 +403,7 @@
     </header>
     
     <a href="agendar.html" class="agendar-btn">Agendar Cita</a>
-    <img src="logo.jpg" alt="Logo DentiBlast" class="top-left-image">
+    <img src="logo.png" alt="Logo DentiBlast" class="top-left-image">
     <section>
         <h2>Historia</h2>
         <p>DentiBlast es una clínica creada en el 2024 que está conformada por 
@@ -788,17 +788,24 @@
             const objectives = document.getElementById(`${type}-objectives`);
             const title = objectives.previousElementSibling;
             
+            // Si hay una sección activa y es diferente a la que se está clickeando, la cerramos
             if (activeSection && activeSection !== objectives) {
                 activeSection.classList.add('hidden');
                 activeSection.previousElementSibling.classList.remove('active');
             }
 
+            // Toggle de la sección actual
             objectives.classList.toggle('hidden');
             title.classList.toggle('active');
-        
+            
+            // Actualizamos la sección activa
             activeSection = objectives.classList.contains('hidden') ? null : objectives;
+
+            // Evitamos que el click se propague al documento
             event.stopPropagation();
         }
+
+        // Cerrar al hacer click fuera
         document.addEventListener('click', () => {
             if (activeSection) {
                 activeSection.classList.add('hidden');
@@ -810,3 +817,4 @@
     
 </body>
 </html>
+    
