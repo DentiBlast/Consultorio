@@ -172,7 +172,33 @@
                 padding: 1rem;
             }
         }
+        .agendar-btn {
+            position: fixed;
+            right: 200px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #9370DB, #6A5ACD);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .agendar-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #6A5ACD, #483D8B);
+        }
     </style>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita</title>
 </head>
 <body>
     <style>
@@ -317,6 +343,7 @@
             padding: 2rem;
             border-radius: 20px;
         }
+
     </style>
     
     <img src="logo.jpg" alt="Logo DentiBlast" class="top-left-image">
@@ -326,7 +353,10 @@
         <h3>ADMINISTRACIÓN Y GESTIÓN DE LA CLÍNICA DENTIBLAST</h3>
         <h2>¡Donde cada consulta hace la diferencia!</h2>
     </header>
+    
+    <a href="agendar.html" class="agendar-btn">Agendar Cita</a>
 
+    
     <section>
         <h2>Historia</h2>
         <p>DentiBlast es una clínica creada en el 2024 que está conformada por 
